@@ -1,0 +1,27 @@
+* {
+    color: black;
+}
+
+.container {
+    padding-top: 25px;
+}
+
+.cards {
+    box-sizing: border-box;
+    border: 1px solid black;
+    padding: 10px;
+    width: 1000px;
+    height: 250px;
+}
+
+.cardImg {
+    float: left;
+    width: 250px;
+    height: 200px;
+    padding-right: 20px;
+}
+
+.cardDesc {
+    padding-top: 10px;
+    text-align: justify;
+}

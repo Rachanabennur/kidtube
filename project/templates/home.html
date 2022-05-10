@@ -1,1 +1,63 @@
-<h2>Home</h2>
+{%load static%}
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+
+    <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+
+    <title>Kids Tube</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="cards">
+            <img class="cardImg" src="{%static 'images/pic1.jpg'%}" alt="" />
+
+            <div>
+              <a href="about/"><h5>Card title</h5><a>
+              <p class="cardDesc">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6 mb-4">
+          <div class="cards">
+            <img class="cardImg" src="{%static 'images/pic1.jpg'%}" alt="" />
+
+            <div>
+              <a href="about/"><h5>Card title</h5></a>
+              <p class="cardDesc">
+                Some quick example text to build on the card title and make up
+                the bulk of the card's content.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+  </body>
+</html>
