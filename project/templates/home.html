@@ -30,29 +30,19 @@
   <body>
     <div class = "main">
       <div>
+        {% for key,value in data.items %}
           <div class="cards">
-            <img class="cardImg" src="{%static 'images/pic1.jpg'%}" alt="" />
+            <img class="cardImg" src="{%static 'images/pic1.jpg' %}" alt="" />
 
             <div>
-              <a href="about/"><h5>Card title</h5><a>
+              <a href="about/"><h5> {{key}} </h5><a>
               <p class="cardDesc">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
+                {{ value }}
               </p>
             </div>
         </div>
         <br />
-        <div class="cards">
-            <img class="cardImg" src="{%static 'images/pic1.jpg'%}" alt="" />
-
-            <div>
-              <a href="about/"><h5>Card title</h5></a>
-              <p class="cardDesc">
-                Some quick example text to build on the card title and make up
-                the bulk of the card's content.
-              </p>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+    </div>
   </body>
 </html>
