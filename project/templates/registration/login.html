@@ -1,0 +1,19 @@
+<!-- templates/registration/login.html -->
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<div class="login" style="background-color: yellow; width: 50rem; height: 20rem; position: relative; margin: auto;">
+<h2  style="position: relative; margin: auto;" >Log In</h2>
+<div class="outerClass" style="margin: 45px; position:relative; ">
+<form method="post" style="margin: auto; position:relative; width: 30rem; height: 10rem; background-color: aliceblue; padding-bottom: 20px;">
+  {% csrf_token %}
+  <div class="field" style="height: 10rem; width:10rem" >
+  {{ form.as_p }}
+</div>
+  <button type="submit">Log In</button>
+</form>
+</div>
+</div>
+{% endblock %}

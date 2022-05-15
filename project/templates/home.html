@@ -1,5 +1,13 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
 {%load static%}
-<html>
+
+{% block content %}
+{% if user.is_authenticated %}
+  <!-- Hi {{ user.username }}! -->
+  <html>
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
@@ -28,8 +36,22 @@
     <title>Kids Tube</title>
   </head>
   <body>
+    <div class="toolbar">
+      <!-- <button class="btn btn-sm card-button" data-toggle="modal"
+      data-target="#modal-project-{{project.pk}}" >Upload</button>
+      <button><a href="{% url 'logout' %}">Log Out</a></button> -->
+      <nav>
+        <div class="nav-wrapper" style="background-color: rgb(241, 182, 6); height: 5rem;">
+          <div id="nav-mobile" class="right hide-on-med-and-down" style="padding-top: 15px;">
+            <a href="/upload" class="btn btn-primary">Upload</a> 
+            <a href="{% url 'logout' %}" class="btn btn-primary">Log Out</a>
+          </div>
+        </div>
+      </nav>
+    </div>
     <div class = "main">
-      <div>
+
+      <!-- <div>
         {% for key,value in data.items %}
           <div class="cards">
             <img class="cardImg" src="{%static 'images/pic1.jpg' %}" alt="" />
@@ -43,6 +65,52 @@
         </div>
         <br />
         {% endfor %}
+    </div> -->
+    {% for card in cards %}
+    {#  Single Card Template:#}
+    <div class="card" style="width: 60rem; margin: 10px">
+      <div class="card-body" style="display: flex; flex-direction: row;">
+        <div>
+        <img src="{{ card.image }}" class="card-img-top" style="height: 10rem; width:30rem" >
+        </div>
+        
+
+        <div style="display: flex; flex-direction: column; width: 14rem;">
+          <h5 class="card-title">{{ card.title }}</h5>
+          <p class="card-text">{{ card.description }}</p>
+        </div>
+        <!-- <a href="/command/{{ card.id }}/color" class="btn btn-primary">Change Color</a>-->
+        <!-- <a href="/command/{{ card.id }}" class="btn btn-primary">Delete</a>  -->
+      </div>
     </div>
+    {% endfor %}
   </body>
 </html>
+
+  </button>
+{% else %}
+  <p>You are not logged in</p>
+  <a href="{% url 'login' %}">Log In</a>
+{% endif %}
+
+<!-- <div class="modal fade" id="modal-project-{{project.pk}}" tabindex="-1"
+    aria-labelledby="modal-project-{{project.pk}}-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modal-project-{{project.pk}}-label">modal exemple</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Something in the modal for this project
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-light" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div> -->
+{% endblock %}
+
