@@ -44,17 +44,10 @@ def HomePageView(request):
       return render(request,'home.html', context={"cards": cards})
 
 
-def command(request, id):
-    for card in cards:
-        if id == card["id"]:
-                cards.remove(card)
-    return render(request,'home.html', context={"cards": cards})
+
 
 def upload(request):
-    # for card in cards:
-     
-     cards.append(Cards(7,"Python","https://i.auto-bild.de/mdb/extra_large/99/2ergrantourer-a02.png","no des"))
-     return render(request,'home.html', context={"cards": cards})
+    return render(request,'upload.html', context={"cards": cards})
 
 
 def AboutPageView(request):
@@ -62,16 +55,3 @@ def AboutPageView(request):
 
 def LoginPageView(request):
     return render(request, 'registration/login.html')
-
-class CustomLoginForm(AuthenticationForm):
-
-  def __init__(self, *args, **kwargs):
-    super().__init__(*args, **kwargs)
-    self.fields['username'].widget.attrs.update(
-      {'class': 'my-username-class'}
-    )
-    self.fields['password'].widget.attrs.update(
-      {'class': 'my-password-class'}
-    )
-
-# def uploadVideo(request, title, description):
