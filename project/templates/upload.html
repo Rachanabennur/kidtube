@@ -1,1 +1,52 @@
-<h1>Upload here</h1>
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+
+    <title>Upload</title>
+  </head>
+  <body>
+    <div class="toolbar">
+      <!-- <button class="btn btn-sm card-button" data-toggle="modal"
+      data-target="#modal-project-{{project.pk}}" >Upload</button>
+      <button><a href="{% url 'logout' %}">Log Out</a></button> -->
+      <nav>
+        <div class="nav-wrapper" style="background-color: rgb(241, 182, 6); height: 5rem;">
+          <div id="nav-mobile" class="right hide-on-med-and-down" style="padding-top: 15px;">
+            <a href="/home" class="btn btn-primary">Back</a> 
+            <a href="{% url 'logout' %}" class="btn btn-primary">Log Out</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class = "main">
+        <h1>Upload Content Sona!</h1>
+        <form method="POST" action="{% url 'upload' %} " enctypt="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <br />
+        <button> Submit </button>
+        </form>
+    </div> 
+   
+  </body>
+</html>

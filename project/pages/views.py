@@ -1,9 +1,6 @@
-from re import template
-import string
-from turtle import title
 from django.shortcuts import redirect, render
-from django.views.generic import TemplateView
-from django.contrib.auth.forms import AuthenticationForm
+from .models import Videos
+from .forms import UploadForm
 
 class Cards:
    def __init__(self, id, title, image, description):
@@ -44,10 +41,19 @@ def HomePageView(request):
       return render(request,'home.html', context={"cards": cards})
 
 
-
+def command(request, id):
+    for card in cards:
+        if id == card["id"]:
+            cards.remove(card)
+    return render(request,'home.html', context={"cards": cards})
 
 def upload(request):
-    return render(request,'upload.html', context={"cards": cards})
+    if request.POST:
+        form = UploadForm(request.POST)
+        if form.is_valid():
+            form.save()
+        return redirect(HomePageView)
+    return render(request,'upload.html', context={"form": UploadForm})
 
 
 def AboutPageView(request):
