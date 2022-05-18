@@ -38,13 +38,13 @@
       <nav>
         <div class="nav-wrapper" style="background-color:#1A1818; height: 4rem;">
           <div id="nav-mobile" class="right hide-on-med-and-down" style="padding-top: 15px;">
-            <a href="#" style="color:white; padding-left: 30px; text-decoration:none; padding-right: 50px; font-size: 15px;"> All</a> 
-            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Movies</a>
-            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Education</a>
-            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Sports</a>
-            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">News</a>
-            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Gaming</a>
-            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Others</a>
+            <a href="#All" style="color:white; padding-left: 30px; text-decoration:none; padding-right: 50px; font-size: 15px;"> All</a> 
+            <a href="#Movies" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Movies</a>
+            <a href="#Education" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Education</a>
+            <a href="#Sports" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Sports</a>
+            <a href="#News" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">News</a>
+            <a href="#Gaming" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Gaming</a>
+            <a href="#All" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Others</a>
             <input type="text" placeholder="Search" />
             <a href="/upload" style="color:white; text-decoration:none; padding-left: 50px; padding-right: 50px; font-size: 15px;">Upload</a>
             <a href="{% url 'index' %}" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Log Out</a>
@@ -64,7 +64,7 @@
       </div>
 
       <br />
-      <h2 style="color:white"> Movies </h2>
+      <section id = "Movies"><h2 style="color:white"> Movies </h2></section>
       <br />
 
       {% for card in cards %}
@@ -85,7 +85,7 @@
     {% endfor %}
 
     <br />
-    <h2 style="color:white"> Education </h2>
+    <section id = "Education"><h2 style="color:white"> Education </h2></section>
     <br />
 
     {% for card in cards %}
@@ -106,7 +106,7 @@
   {% endfor %}
 
   <br />
-  <h2 style="color:white"> Sports </h2>
+  <section id = "Sports"><h2 style="color:white"> Sports </h2></section>
   <br />
 
   {% for card in cards %}
@@ -127,7 +127,7 @@
 {% endfor %}
 
 <br />
-<h2 style="color:white"> News </h2>
+<section id = "News"><h2 style="color:white"> News </h2></section>
 <br />
 
 {% for card in cards %}
@@ -148,7 +148,7 @@
 {% endfor %}
 
 <br />
-<h2 style="color:white"> Gaming </h2>
+<section id = "Gaming"><h2 style="color:white"> Gaming </h2></section>
 <br />
 
 {% for card in cards %}
@@ -169,7 +169,7 @@
 {% endfor %}
 
 <br />
-<h2 style="color:white"> All </h2>
+<section id = "All"><h2 style="color:white"><h2 style="color:white"> All </h2></section>
 <br />
 
 {% for card in cards %}
