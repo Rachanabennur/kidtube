@@ -114,7 +114,7 @@ def upload(request):
     return render(request,'upload.html', context={"form": UploadForm})
 
 def videoplay(request):
-  return render(request, 'videoplay.html')  
+  return render(request, 'videoplay.html', context={"cards":cards})  
 
 
 def AboutPageView(request):
