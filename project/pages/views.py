@@ -113,6 +113,9 @@ def upload(request):
         return redirect(HomePageView)
     return render(request,'upload.html', context={"form": UploadForm})
 
+def videoplay(request):
+  return render(request, 'videoplay.html')  
+
 
 def AboutPageView(request):
     return render(request, 'about.html')
