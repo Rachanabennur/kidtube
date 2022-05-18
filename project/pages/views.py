@@ -1,5 +1,6 @@
+import re
 from django.shortcuts import redirect, render
-from .models import Videos
+from .models import Videos, Feed
 from .forms import UploadForm
 
 class Cards:
@@ -38,8 +39,11 @@ cards = [
   ]
     # return render(request,'home.html', cardsInfo)
 def HomePageView(request):
-      return render(request,'home.html', context={"cards": cards})
+    return render(request,'home.html', context={"cards": cards})
 
+
+def index(request):
+    return render(request, 'index.html')
 
 def command(request, id):
     for card in cards:
@@ -48,10 +52,18 @@ def command(request, id):
     return render(request,'home.html', context={"cards": cards})
 
 def upload(request):
-    if request.POST:
-        form = UploadForm(request.POST)
-        if form.is_valid():
-            form.save()
+    form = UploadForm()
+    if request.method == "POST" :
+        form = UploadForm(request.POST, request.FILES)
+        title = form.data["title"]
+        print(title)
+        desc = form.data["description"]
+        print(desc)
+        long_desc = form.data["long_desc"]
+        print(long_desc)
+        img = form.data["img"]
+        print(img)
+        vid = form.data["vid"]
         return redirect(HomePageView)
     return render(request,'upload.html', context={"form": UploadForm})
 

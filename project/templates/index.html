@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block title %}Kid Tube{% endblock %}
+
+{%load static%}
+
+{% block content %}
+<html>
+    <head>
+
+        <meta charset="utf-8" />
+        <meta
+          name="viewport"
+          content="width=device-width"
+        />
+    
+        <!-- Bootstrap CSS -->
+        <link
+          rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous"
+        />
+    
+        <link
+          rel="stylesheet"
+          href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+          integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+          crossorigin="anonymous"
+        />
+    
+    
+        <title>Kids Tube</title>
+    
+        <link rel="stylesheet" href="{% static 'css/home.css' %}" />
+
+
+    </head>
+    <body>
+        <div class="index">
+            <img class="bgimg" src="{%static 'images/bg1.jpg' %}" alt="">
+            <div class="centered"> 
+                <div class="loginbox">
+                    <span style="color: #3B8B45; font-size:50px;"> Thop</span> <span style="font-size:50px;">TV</span>
+                    <br />
+                    <br />
+                    <input type="text" placeholder="Username" />
+                    <br />
+                    <br />
+                    <input type="Password" placeholder="Password" />
+                    <br />
+                    <br />
+                    <a href="{% url 'home' %}"> <button id="loginbtn" style="color:white; background-color:#3B8B45; display:inline-block; font-size:24px;" > Login </button></a>
+                </div> 
+            </div>
+          </div>
+    </body>
+</html>
+
+{% endblock %}
