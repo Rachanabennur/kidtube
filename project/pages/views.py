@@ -70,6 +70,3 @@ def upload(request):
 
 def AboutPageView(request):
     return render(request, 'about.html')
-
-def LoginPageView(request):
-    return render(request, 'registration/login.html')

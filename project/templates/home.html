@@ -5,18 +5,14 @@
 {%load static%}
 
 {% block content %}
-{% if user.is_authenticated %}
-  <!-- Hi {{ user.username }}! -->
   <html>
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width"
     />
 
-    <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -37,14 +33,11 @@
   </head>
   <body>
     <div class="toolbar">
-      <!-- <button class="btn btn-sm card-button" data-toggle="modal"
-      data-target="#modal-project-{{project.pk}}" >Upload</button>
-      <button><a href="{% url 'logout' %}">Log Out</a></button> -->
       <nav>
         <div class="nav-wrapper" style="background-color: rgb(241, 182, 6); height: 5rem;">
           <div id="nav-mobile" class="right hide-on-med-and-down" style="padding-top: 15px;">
             <a href="/upload" class="btn btn-primary">Upload</a> 
-            <a href="{% url 'logout' %}" class="btn btn-primary">Log Out</a>
+            <a href="{% url 'index' %}" class="btn btn-primary">Log Out</a>
           </div>
         </div>
       </nav>
@@ -71,9 +64,6 @@
 </html>
 
   </button>
-{% else %}
-  <p>You are not logged in</p>
-  <a href="{% url 'login' %}">Log In</a>
-{% endif %}
+
 {% endblock %}
 
