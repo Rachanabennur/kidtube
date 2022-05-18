@@ -1,13 +1,16 @@
-.centered {
-    position: absolute;
-    top: 20%;
-    left: 20%;
-    color: white;
+input {
+    width: 400px;
 }
 
-.bgimg {
-    width: 1512px;
-    height: 730px;
+input[type="text"] {
+    border: none;
+    background: #C4C4C4;
+    margin: 0;
+    padding: 7px 8px;
+    font-size: 14px;
+    color: inherit;
+    border: 1px solid transparent;
+    border-radius: inherit;
 }
 
 .main {
@@ -15,33 +18,16 @@
     padding-left: 25px;
 }
 
-.loginbox {
-    box-sizing: border-box;
-    border: 1px solid black;
-    padding: 10px;
+.card {
     width: 300px;
     height: 350px;
-    background-color: rgba(0, 0, 0, 0.559);
-    text-align: center;
-    font-size: larger;
+    display: inline-block;
 }
 
-.cards {
-    box-sizing: border-box;
-    border: 1px solid black;
-    padding: 10px;
-    width: 1450px;
-    height: 150px;
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-.cardImg {
-    float: left;
-    width: 250px;
-    height: 120px;
-    padding-right: 20px;
-}
-
-.cardDesc {
-    padding-top: 10px;
-    text-align: justify;
+.mySlides {
+    display: none;
 }

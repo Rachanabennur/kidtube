@@ -20,6 +20,8 @@
       crossorigin="anonymous"
     />
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
     <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
@@ -31,35 +33,176 @@
 
     <title>Kids Tube</title>
   </head>
-  <body>
+  <body style="background-color:#1A1818;"" >
     <div class="toolbar">
       <nav>
-        <div class="nav-wrapper" style="background-color: rgb(241, 182, 6); height: 5rem;">
+        <div class="nav-wrapper" style="background-color:#1A1818; height: 4rem;">
           <div id="nav-mobile" class="right hide-on-med-and-down" style="padding-top: 15px;">
-            <a href="/upload" class="btn btn-primary">Upload</a> 
-            <a href="{% url 'index' %}" class="btn btn-primary">Log Out</a>
+            <a href="#" style="color:white; padding-left: 30px; text-decoration:none; padding-right: 50px; font-size: 15px;"> All</a> 
+            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Movies</a>
+            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Education</a>
+            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Sports</a>
+            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">News</a>
+            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Gaming</a>
+            <a href="#" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Others</a>
+            <input type="text" placeholder="Search" />
+            <a href="/upload" style="color:white; text-decoration:none; padding-left: 50px; padding-right: 50px; font-size: 15px;">Upload</a>
+            <a href="{% url 'index' %}" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Log Out</a>
           </div>
         </div>
       </nav>
     </div>
     <div class = "main">
 
-      <div>
-        {% for card in cards %}
-          <div class="cards">
-            <img class="cardImg" src="{{ card.image }}" alt="" />
+      <h2 style="color:white"> Trending </h2>
+      <br />
 
-            <div>
-              <a href="about/"><h5> {{card.title}} </h5><a>
-              <p class="cardDesc">
-                {{ card.description }}
-              </p>
-            </div>
+      <div class="w3-content w3-section" style="max-width:100%">
+        <img class="mySlides" src="{%static 'images/trending1.jpg' %}" style="width:100%">
+        <img class="mySlides" src="{%static 'images/trending2.jpg' %}" style="width:100%">
+        <img class="mySlides" src="{%static 'images/trending3.jpg' %}" style="width:100%">
+      </div>
+
+      <br />
+      <h2 style="color:white"> Movies </h2>
+      <br />
+
+      {% for card in cards %}
+      {% if card.category == "Movies" %}
+        <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
+          <div class="w3-display-container w3-text-white">
+            <img src="{{card.image}}" alt="Lights" style="width:400px">
+            
+          </div>
+          <div class="w3-row">
+            <div class="w3-container">
+              <h3 style="color:white"> {{card.title}} </h3>
+              <p style="color:white"> {{card.description}} </p>
+          </div>
+        </div>       
+      </div> 
+    {% endif %}
+    {% endfor %}
+
+    <br />
+    <h2 style="color:white"> Education </h2>
+    <br />
+
+    {% for card in cards %}
+    {% if card.category == "Education" %}
+      <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
+        <div class="w3-display-container w3-text-white">
+          <img src="{{card.image}}" alt="Lights" style="width:400px">
+          
         </div>
-        <br />
-        {% endfor %}
+        <div class="w3-row">
+          <div class="w3-container">
+            <h3 style="color:white"> {{card.title}} </h3>
+            <p style="color:white"> {{card.description}} </p>
+        </div>
+      </div>       
     </div> 
-   
+  {% endif %}
+  {% endfor %}
+
+  <br />
+  <h2 style="color:white"> Sports </h2>
+  <br />
+
+  {% for card in cards %}
+  {% if card.category == "Sports" %}
+    <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
+      <div class="w3-display-container w3-text-white">
+        <img src="{{card.image}}" alt="Lights" style="width:400px">
+        
+      </div>
+      <div class="w3-row">
+        <div class="w3-container">
+          <h3 style="color:white"> {{card.title}} </h3>
+          <p style="color:white"> {{card.description}} </p>
+      </div>
+    </div>       
+  </div> 
+{% endif %}
+{% endfor %}
+
+<br />
+<h2 style="color:white"> News </h2>
+<br />
+
+{% for card in cards %}
+{% if card.category == "News" %}
+  <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
+    <div class="w3-display-container w3-text-white">
+      <img src="{{card.image}}" alt="Lights" style="width:400px">
+      
+    </div>
+    <div class="w3-row">
+      <div class="w3-container">
+        <h3 style="color:white"> {{card.title}} </h3>
+        <p style="color:white"> {{card.description}} </p>
+    </div>
+  </div>       
+</div> 
+{% endif %}
+{% endfor %}
+
+<br />
+<h2 style="color:white"> Gaming </h2>
+<br />
+
+{% for card in cards %}
+{% if card.category == "Gaming" %}
+  <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
+    <div class="w3-display-container w3-text-white">
+      <img src="{{card.image}}" alt="Lights" style="width:400px">
+      
+    </div>
+    <div class="w3-row">
+      <div class="w3-container">
+        <h3 style="color:white"> {{card.title}} </h3>
+        <p style="color:white"> {{card.description}} </p>
+    </div>
+  </div>       
+</div> 
+{% endif %}
+{% endfor %}
+
+<br />
+<h2 style="color:white"> All </h2>
+<br />
+
+{% for card in cards %}
+  <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
+    <div class="w3-display-container w3-text-white">
+      <img src="{{card.image}}" alt="Lights" style="width:400px">
+      
+    </div>
+    <div class="w3-row">
+      <div class="w3-container">
+        <h3 style="color:white"> {{card.title}} </h3>
+        <p style="color:white"> {{card.description}} </p>
+    </div>
+  </div>       
+</div> 
+{% endfor %}
+
+    <script>
+      var myIndex = 0;
+      carousel();
+      
+      function carousel() {
+        var i;
+        var x = document.getElementsByClassName("mySlides");
+        for (i = 0; i < x.length; i++) {
+          x[i].style.display = "none";  
+        }
+        myIndex++;
+        if (myIndex > x.length) {myIndex = 1}    
+        x[myIndex-1].style.display = "block";  
+        setTimeout(carousel, 5000); // Change image every 2 seconds
+      }
+      </script>
   </body>
 </html>
 
