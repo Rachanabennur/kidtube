@@ -63,13 +63,13 @@
     <div class="video-content">
         <div id="video">
             <video width="100%" height="100%" style="background-color: #1A1818"  controls>
-                <source src="{%static 'videos/movie.mp4' %}" type="video/mp4">
+                <source src="{{sel_card.vid}}" type="video/mp4">
               </video>
         </div>
         <br>
         <div id="description" >
-            <h5>Description</h5>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic atque, sunt amet quas labore dignissimos in aspernatur totam aperiam, optio, animi placeat. Molestiae molestias neque libero nobis, quibusdam rerum. Perspiciatis.</p>
+            <h5>{{sel_card.title}}</h5>
+            <p>{{sel_card.description}}</p>
         </div>
         <br>
         <h5>Comments</h5>
@@ -93,12 +93,12 @@
           {% for card in cards %}
             <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
               <div class="w3-display-container w3-text-white">
-                <img src="{{card.image}}" alt="Lights" style="width:400px">
+                <img src="{{card.img}}" alt="Lights" style="width:400px">
                 
               </div>
               <div class="w3-row">
                 <div class="w3-container">
-                  <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+                  <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
                   
               </div>
             </div>       
@@ -112,3 +112,4 @@
 </div>
 </body>
 </html>
+

@@ -71,12 +71,12 @@
       {% if card.category == "Movies" %}
         <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
           <div class="w3-display-container w3-text-white">
-            <img src="{{card.image}}" alt="Lights" style="width:400px">
+            <img src="{{card.img}}" alt="Lights" style="width:400px">
             
           </div>
           <div class="w3-row">
             <div class="w3-container">
-              <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+              <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
               <p style="color:white"> {{card.description}} </p>
           </div>
         </div>       
@@ -92,12 +92,12 @@
     {% if card.category == "Education" %}
       <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
         <div class="w3-display-container w3-text-white">
-          <img src="{{card.image}}" alt="Lights" style="width:400px">
+          <img src="{{card.img}}" alt="Lights" style="width:400px">
           
         </div>
         <div class="w3-row">
           <div class="w3-container">
-            <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+            <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
             <p style="color:white"> {{card.description}} </p>
         </div>
       </div>       
@@ -113,12 +113,12 @@
   {% if card.category == "Sports" %}
     <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
       <div class="w3-display-container w3-text-white">
-        <img src="{{card.image}}" alt="Lights" style="width:400px">
+        <img src="{{card.img}}" alt="Lights" style="width:400px">
         
       </div>
       <div class="w3-row">
         <div class="w3-container">
-          <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+          <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
           <p style="color:white"> {{card.description}} </p>
       </div>
     </div>       
@@ -134,12 +134,12 @@
 {% if card.category == "News" %}
   <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
     <div class="w3-display-container w3-text-white">
-      <img src="{{card.image}}" alt="Lights" style="width:400px">
+      <img src="{{card.img}}" alt="Lights" style="width:400px">
       
     </div>
     <div class="w3-row">
       <div class="w3-container">
-        <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+        <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
         <p style="color:white"> {{card.description}} </p>
     </div>
   </div>       
@@ -155,12 +155,12 @@
 {% if card.category == "Gaming" %}
   <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
     <div class="w3-display-container w3-text-white">
-      <img src="{{card.image}}" alt="Lights" style="width:400px">
+      <img src="{{card.img}}" alt="Lights" style="width:400px">
       
     </div>
     <div class="w3-row">
       <div class="w3-container">
-        <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+        <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
         <p style="color:white"> {{card.description}} </p>
     </div>
   </div>       
@@ -175,12 +175,12 @@
 {% for card in cards %}
   <div class="w3-card-4 w3-margin" style="width:400px; display:inline-block;">
     <div class="w3-display-container w3-text-white">
-      <img src="{{card.image}}" alt="Lights" style="width:400px">
+      <img src="{{card.img}}" alt="Lights" style="width:400px">
       
     </div>
     <div class="w3-row">
       <div class="w3-container">
-        <a href="{% url 'videoplay' %}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
+        <a href="videoplay/{{card.id}}" style="text-decoration: none"><h3 style="color:white"> {{card.title}} </h3></a>
         <p style="color:white"> {{card.description}} </p>
     </div>
   </div>       

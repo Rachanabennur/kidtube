@@ -11,5 +11,6 @@ urlpatterns = [
     path("home", HomePageView, name="home"),
     path("about/", AboutPageView, name="about"),
     path('upload', upload, name="upload"),
-    path("videoplay/", videoplay, name="videoplay")
+    path("videoplay/<int:id>", videoplay, name="videoplay")
 ]
+

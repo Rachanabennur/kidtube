@@ -1,18 +1,14 @@
-from distutils.command.upload import upload
+from statistics import mode
 from django.db import models
 
 
-class Videos(models.Model):
-    title = models.CharField(max_length=100)
-    description = models.CharField(max_length=100)
     
 class Feed(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=100)
-    long_desc = models.CharField(max_length=200)
-    img = models.ImageField(upload_to='images/')
-    vid = models.FileField(upload_to='videos/')
-
-
-    
-    
+    img = models.CharField(max_length=100)
+    vid = models.CharField(max_length=100)
+    category = models.CharField(max_length=100, default="")
+    tags = models.BooleanField(default=False)
+    url = models.URLField(default="")
+    comments = models.CharField(max_length=1000, default="")    
