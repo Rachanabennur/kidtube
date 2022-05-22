@@ -113,7 +113,7 @@ def predict_age_and_gender():
     # create a new cam object
     cap = cv2.VideoCapture(0)
 
-    for i in range(0,50):
+    for i in range(0,35):
         _, img = cap.read()
         # Take a copy of the initial image and resize it
         frame = img.copy()

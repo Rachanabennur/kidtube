@@ -61,13 +61,20 @@
             </nav>
           </div>
 <div class="container">
+    
 
     <div class="video-content">
+        {%if flag%}
         <div id="video">
             <video width="100%" height="100%" style="background-color: #1A1818"  controls>
                 <source src="{{sel_card.vid}}" type="video/mp4">
               </video>
         </div>
+        {%else%}
+        <div>
+          <img src="../static/images/no-content.jpeg" style="width: 90%;">
+        </div>
+        {%endif%}
         <br>
         <div id="description" >
             <h5>{{sel_card.title}}</h5>
