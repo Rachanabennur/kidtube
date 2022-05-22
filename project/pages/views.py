@@ -2,16 +2,8 @@ import re
 from django.shortcuts import redirect, render
 from .models import Feed
 from .forms import UploadForm
+from .AgeDetect import  predict_age_and_gender
 
-class Cards:
-   def __init__(self, id, title, image, description):
-        self.id = id
-        self.title = title
-        self.image = image
-        self.description = description
-
-
-    # return render(request,'home.html', cardsInfo)
 def HomePageView(request):
     cards = Feed.objects.all()
     return render(request,'home.html', context={"cards": cards})
@@ -40,6 +32,7 @@ def upload(request):
 
 def videoplay(request, id):
     sel_card = Feed.objects.get(id=id)
+    print(sel_card.tags)
     print(sel_card.title)
     cards = Feed.objects.all()
     return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card})  
