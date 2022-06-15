@@ -38,6 +38,8 @@
     document.getElementById("comment-display").innerHTML = commentlist.join('<br><br>');
     document.getElementById("comment").value = " "
     console.log(commentlist)
+    
+    
   }
 </script>
     </head>
@@ -83,18 +85,23 @@
         <br>
         <h5>Comments</h5>
        
-           <div class="comment-input" style="display: flex; flex-direction:row">
+        <div class="comment-input" style="display: flex; flex-direction:row">
+          <form method="post">{% csrf_token %}
             <label for="comment"></label><br>
             <input type="text" id="comment" name="comment" placeholder="Enter Comment" style="height: 40px; width:70%"> 
-            <!-- <i class="material-icons" style="color: white;" (click)="getComment()">&#xe163;</i> -->
-            <button onclick= "getComment()">Send</button>
-        </div>
+            <button type="submit">Send</button>
+          </form>
+          <br /> 
+         
+          
+      </div>
             <br>
 
             <div id="comments">
                 
-                <p id="comment-display" style="color:white"></p>
-
+                {% for r in safe_comment %}
+                <p id="comment-display" style="color: white;">{{ r }}</p> <br />
+              {% endfor %}
                 <!--<div class="w3-card-4" style="width:70%">
                   <div class="w3-container">
                     <hr>
