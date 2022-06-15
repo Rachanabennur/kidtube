@@ -1,10 +1,13 @@
+from email import message
 import imp
 import re
+from venv import create
 from django.shortcuts import redirect, render
-from .models import Feed
+from .models import Feed, CommentClass
 from .forms import UploadForm
 from .AgeDetect import  predict_age_and_gender
 from .comment_analysis import analysis
+
 
 def HomePageView(request):
     cards = Feed.objects.all()
@@ -44,6 +47,8 @@ def videoplay(request, id):
         print(comment)
         Comment.append(comment)
         safe_comment=analysis(Comment)
+        
+        CommentClass.objects.create(video_id = id, message = safe_comment)
 
         # print(safe_co)
         return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "flag":flag, "safe_comment": safe_comment})
