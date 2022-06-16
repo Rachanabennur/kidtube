@@ -99,17 +99,9 @@
 
             <div id="comments">
                 
-                {% for r in safe_comment %}
-                <p id="comment-display" style="color: white;">{{ r }}</p> <br />
-              {% endfor %}
-                <!--<div class="w3-card-4" style="width:70%">
-                  <div class="w3-container">
-                    <hr>
-                    <img src="../static/images/avtar.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-                    <p style="color:white">CEO at Mighty Schools. Marketing and Advertising. Seeking a new job and new opportunities.</p>
-                    <hr>
-                  </div>
-                </div>-->
+                {% for comment in commentList %}
+                  <p id="comment-display" style="color: white;">{{ comment }}</p> <br />
+                {% endfor %}
                   </div>
             </div>
     

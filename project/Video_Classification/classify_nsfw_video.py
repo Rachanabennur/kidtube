@@ -43,10 +43,15 @@ def classify_video(videoFile):
 
        
         cap = cv2.VideoCapture(videoFile)
+        print(cap)
         frameRate = cap.get(5) #frame rate
+        print("before")
         while(cap.isOpened()):
+            print("after")
             frameId = cap.get(1) #current frame number
             ret, frame = cap.read()
+            print(ret)
+            print(frame)
             if (ret != True):
                 break
             if (frameId % math.floor(frameRate/4) == 0):

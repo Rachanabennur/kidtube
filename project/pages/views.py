@@ -37,7 +37,12 @@ def upload(request):
 
 def videoplay(request, id):
     Comment=[]
+    commentList = []
     safe_comment=[]
+    for j in CommentClass.objects.all():
+        if(str(j.video_id) == str(id)):
+            commentList.append(j.message[2:-2])
+     
     sel_card = Feed.objects.get(id=id)
     print(sel_card.tags)
     flag=True
@@ -49,14 +54,19 @@ def videoplay(request, id):
         safe_comment=analysis(Comment)
         
         CommentClass.objects.create(video_id = id, message = safe_comment)
+        for j in CommentClass.objects.all():
+            if(str(j.video_id) == str(id)):
+                commentList.append(j.message[2:-2])
+        
 
         # print(safe_co)
-        return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "flag":flag, "safe_comment": safe_comment})
-        
+        return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id":id, "flag":flag, "commentList": commentList})
+    print(commentList)
+
     if(sel_card.tags):
         flag = predict_age_and_gender()
     print(sel_card.title)
-    return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "flag":flag, "safe_comment": safe_comment})  
+    return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id" : id,"flag":flag, "commentList": commentList})  
 
 
 def AboutPageView(request):
