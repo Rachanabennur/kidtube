@@ -1,11 +1,9 @@
 import tensorflow as tf
 import cv2
 import math
-
-from model import OpenNsfwModel, InputType
-from image_utils import create_tensorflow_image_loader
-from image_utils import create_yahoo_image_loader
-
+from Video_Classification.model import OpenNsfwModel, InputType
+from Video_Classification.image_utils import create_tensorflow_image_loader
+from Video_Classification.image_utils import create_yahoo_image_loader
 import numpy as np
 
 
@@ -41,12 +39,17 @@ def classify_video(videoFile):
         sess.run(tf.compat.v1.global_variables_initializer())
 
 
-       
+        print(videoFile)
         cap = cv2.VideoCapture(videoFile)
-        print(cap)
+        # print(cap)
+        # print("before")
+        # cap.open(videoFile)
         frameRate = cap.get(5) #frame rate
-        print("before")
-        while(cap.isOpened()):
+        # print(frameRate)
+
+
+        # print(cap.isOpened())
+        while (cap.isOpened()):
             print("after")
             frameId = cap.get(1) #current frame number
             ret, frame = cap.read()
@@ -69,10 +72,12 @@ def classify_video(videoFile):
 
 
         cap.release()
-        if(frameNsfw>0):
-            print("NSFW")
+        print("NSFW Frames : "+str(frameNsfw))
+        print("Total Frames checked :"+str(frameTotal))
+        if(frameNsfw==0):
+            return False
         else:
-            print("SFW")
+            return True
 
     print("NSFW Frames : "+str(frameNsfw))
     print("Total Frames checked :"+str(frameTotal))

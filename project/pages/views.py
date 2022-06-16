@@ -1,12 +1,15 @@
 from email import message
 import imp
 import re
+from turtle import title
 from venv import create
 from django.shortcuts import redirect, render
+
 from .models import Feed, CommentClass
 from .forms import UploadForm
 from .AgeDetect import  predict_age_and_gender
 from .comment_analysis import analysis
+from Video_Classification.classify_nsfw_video import classify_video
 
 
 def HomePageView(request):
@@ -29,8 +32,13 @@ def upload(request):
     if request.method == "POST" :
         form = UploadForm(request.POST)
         if form.is_valid() :
-            form.save()
-            print("Saved")
+            inp = str(request.POST.get('vid'))
+            inp_image = str(request.POST.get('img'))
+            temp = inp.split('/')
+            op = str('D:\\Projects\\fyp\\kidtube\\project\\static\\uploads\\videos\\')+ str(temp[len(temp)-1])
+            tags = classify_video(op)
+            Feed.objects.create(title = request.POST.get('title'), description = request.POST.get('description'), img = inp_image, 
+            vid = inp, category = request.POST.get('category'), tags = tags, url = request.POST.get('url') )
             return redirect(HomePageView)
         
     return render(request,'upload.html', context={"form": UploadForm})
@@ -44,39 +52,33 @@ def videoplay(request, id):
             commentList.append(j.message[2:-2])
      
     sel_card = Feed.objects.get(id=id)
-    print(sel_card.tags)
     flag=True
     cards = Feed.objects.all()
+    flag_age = True
+
     if request.method=="POST":
         comment=request.POST.get('comment')
-        print(comment)
         Comment.append(comment)
         safe_comment=analysis(Comment)
-        
-        CommentClass.objects.create(video_id = id, message = safe_comment)
+        commentList = []
+        if(len(safe_comment)>0):
+            CommentClass.objects.create(video_id = id, message = safe_comment)
         for j in CommentClass.objects.all():
             if(str(j.video_id) == str(id)):
                 commentList.append(j.message[2:-2])
         
 
-        # print(safe_co)
-        return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id":id, "flag":flag, "commentList": commentList})
-    print(commentList)
-
+        return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id":id, "flag":flag, "flag_age": flag_age, "commentList": commentList})
     if(sel_card.tags):
         flag = predict_age_and_gender()
-    print(sel_card.title)
-    return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id" : id,"flag":flag, "commentList": commentList})  
+        if flag == 0:
+            flag_age = False
+            return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id" : id,"flag":flag, "flag_age": flag_age, "commentList": commentList})  
+
+    return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id" : id,"flag":flag, "flag_age": flag_age,"commentList": commentList})  
 
 
-def AboutPageView(request):
-    return render(request, 'about.html')
 
 
-def updateComment(request):
-    if request.method == 'POSt':
-        data = Feed.objects.get()
-        data.comments = request.POST['commentlist']
-        data.save()
     
 

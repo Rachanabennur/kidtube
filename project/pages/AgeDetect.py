@@ -111,10 +111,18 @@ def get_age_predictions(face_img):
 def predict_age_and_gender():
     """Predict the gender of the faces showing in the image"""
     # create a new cam object
+    empty_face=0
     cap = cv2.VideoCapture(0)
+    print(cap)
+    print(type(cap))
+
+    _, img = cap.read()
+    print(_)
 
     for i in range(0,35):
         _, img = cap.read()
+        # print(_)
+
         # Take a copy of the initial image and resize it
         frame = img.copy()
         # resize if higher than frame_width
@@ -122,9 +130,16 @@ def predict_age_and_gender():
             frame = image_resize(frame, width=frame_width)
         # predict the faces
         faces = get_faces(frame)
+        if len(faces) == 0:
+            empty_face+=1
+            print("Check your camera setting")
+        
+            break
+        print("still inside the loop")
         # Loop over the faces detected
         # for idx, face in enumerate(faces):
         for i, (start_x, start_y, end_x, end_y) in enumerate(faces):
+            print("entered another loop")
             face_img = frame[start_y: end_y, start_x: end_x]
             # predict age
             age_preds = get_age_predictions(face_img)
@@ -159,8 +174,13 @@ def predict_age_and_gender():
         # uncomment if you want to save the image
         # cv2.imwrite("output.jpg", frame)
     # Cleanup
+    print("I am out of the loop")
+    if len(faces)==0:
+        print("reached return part of empty")
+        return 0
     cv2.destroyAllWindows()
-    #print(allow_video)
+    print(allow_video)
     return allow_video
+
 
     
