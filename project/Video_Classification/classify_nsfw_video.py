@@ -10,7 +10,6 @@ import numpy as np
 IMAGE_LOADER_TENSORFLOW = "tensorflow"
 IMAGE_LOADER_YAHOO = "yahoo"
 
-
 def classify_video(videoFile):
    
     model = OpenNsfwModel()

@@ -16,3 +16,11 @@ class Feed(models.Model):
 class CommentClass(models.Model):
     video_id = models.CharField(max_length=5)
     message = models.CharField(max_length=200)
+
+class Feed1(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=100)
+    img = models.FileField()
+    vid = models.FileField()
+    category = models.CharField(max_length=100, default="")
+    tags = models.BooleanField(default=False)

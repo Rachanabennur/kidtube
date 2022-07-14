@@ -1,0 +1,103 @@
+<html>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+      integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+      crossorigin="anonymous"
+    />
+
+    <title>Upload</title>
+    <style>
+      input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+    </style>
+  </head>
+  <body>
+    <div class="toolbar">
+      <nav>
+          <div class="nav-wrapper" style="background-color:#1A1818;">
+          <div id="nav-mobile" class="right hide-on-med-and-down" style="padding-top: 15px; background-color:#1A1818;">
+            <a href="#All" style="color:white; padding-left: 30px; text-decoration:none; padding-right: 50px; font-size: 15px;"> All</a> 
+            <a href="#Movies" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Movies</a>
+            <a href="#Education" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Education</a>
+            <a href="#Sports" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Sports</a>
+            <a href="#News" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">News</a>
+            <a href="#Gaming" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Gaming</a>
+            <a href="#All" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Others</a>
+            <a href="/upload" style="color:white; text-decoration:none; padding-left: 50px; padding-right: 50px; font-size: 15px;">Upload</a>
+            <a href="{% url 'index' %}" style="color:white; text-decoration:none; padding-right: 50px; font-size: 15px;">Log Out</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class = "main">
+        <!-- <h1>Upload Content</h1>
+        <form method="POST" enctypt="multipart/form-data">{% csrf_token %} -->
+        <!-- {% csrf_token %}
+        {{ form.as_p }}
+        <br /> -->
+        
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <label for="title">Title</label>
+    <input type="text" id="title" name="title" placeholder="Enter a title for Video">
+
+    <label for="description">Description</label>
+    <input type="text" id="description" name="description" placeholder="Description(not more than 200 words)">
+
+    <label for="img">Thumbnail Image</label>
+    <input type="file" id="img" name="img">
+
+    <label for="vid">Video</label>
+    <input type="file" id="vid" name="vid">
+
+    <label for="category">Category</label>
+    <input type="text" id="category" name="category" placeholder="Enter the category">
+
+    <input type="submit" value="Submit">
+</form>
+</html>
