@@ -1,16 +1,13 @@
-from email import message
-import imp
-import re
-from turtle import title
-from venv import create
-from django import forms
+
 from django.shortcuts import redirect, render
-from .models import Feed, CommentClass, Feed1
-from .forms import UploadForm, UploadForm1
+from .models import CommentClass, Feed1
+from .forms import UploadForm1
 from .AgeDetect import  predict_age_and_gender
 from .comment_analysis import analysis
 from Video_Classification.classify_nsfw_video import classify_video
 from PIL import ImageFile
+
+#Configurations
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 
@@ -47,20 +44,6 @@ def upload2(request):
 
     return render( request, "upload2.html", context={"form": UploadForm1})
 
-# def upload(request):
-#     if request.method == "POST" :
-#             form = request.POST.get('')
-#             inp = str(request.POST.get('vid'))
-#             inp_image = str(request.POST.get('img'))
-#             temp = inp.split('/')
-#             op = str('D:\\Projects\\fyp\\kidtube\\project\\static\\uploads\\videos\\')+ str(temp[len(temp)-1])
-#             tags = classify_video(op)
-#             Feed.objects.create(title = request.POST.get('title'), description = request.POST.get('description'), img = inp_image, 
-#             vid = inp, category = request.POST.get('category'), tags = tags, url = request.POST.get('url') )
-#             return redirect(HomePageView)
-        
-#     return render(request,'upload.html', context={"form": UploadForm})
-
 def videoplay(request, id):
     Comment=[]
     commentList = []
@@ -94,9 +77,3 @@ def videoplay(request, id):
             return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id" : id,"flag":flag, "flag_age": flag_age, "commentList": commentList})  
 
     return render(request, 'videoplay.html', context={"cards":cards, "sel_card":sel_card, "id" : id,"flag":flag, "flag_age": flag_age,"commentList": commentList})  
-
-
-
-
-    
-
